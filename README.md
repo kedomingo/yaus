@@ -66,3 +66,10 @@ Otherwise, the user will be redirected to the `APP_URL` setup in `.env`.
 Any visit to your domain where this is hosted will trigger a page view. An entry to the `visits` table will be added
 for each visit. The `$_GET` parameters will be added to the `visit_params` table if there are any. Available geolocation and browser information
 will be available in the `visits` table. 
+
+## Development
+
+This code is written to be ran on *nix environments (Linux, Mac).
+
+Maxmind's [CSV converter](https://github.com/maxmind/geoip2-csv-converter) is only available in binary unless you want to compile the source code written in Golang.
+A mac version will be installed by composer if you set `--dev` flag of composer.
