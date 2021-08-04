@@ -73,3 +73,11 @@ This code is written to be ran on *nix environments (Linux, Mac).
 
 Maxmind's [CSV converter](https://github.com/maxmind/geoip2-csv-converter) is only available in binary unless you want to compile the source code written in Golang.
 A mac version will be installed by composer if you set `--dev` flag of composer.
+
+If you have Docker and `docker-compose` installed, a `docker-compose.yaml` file is included so you can spin up a disposable db in your local.
+
+```
+docker-compose up -d db
+```
+
+The default username and password is: user:root password:test_pass. The server will be available at localhost:4306
