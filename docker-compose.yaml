@@ -1,0 +1,12 @@
+version: '3.4'
+services:
+  db:
+    image: mariadb/server:10.4
+    ports:
+      - '4306:3306'
+    volumes:
+      - ../../docker_volume/mariadb:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 'test_pass'
+      MYSQL_USER: 'test'
+      MYSQL_PASS: 'pass'
