@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Redir\app\services;
 
@@ -11,6 +13,7 @@ class GeolocationProvider
 
     /**
      * GeolocationProvider constructor.
+     *
      * @param GeolocationRepository $repository
      */
     public function __construct(GeolocationRepository $repository)
@@ -19,7 +22,7 @@ class GeolocationProvider
     }
 
     /**
-     * @param string $ipAddress
+     * @param  string $ipAddress
      * @return Geolocation|null
      */
     public function getGeolocation(string $ipAddress): ?Geolocation

@@ -1,10 +1,13 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Redir\app\dto;
 
 use DateTimeImmutable;
 
-class Redirect {
+class Redirect
+{
 
     private ?int $id;
     private string $uri;
@@ -24,7 +27,7 @@ class Redirect {
     private function __construct()
     {
         $this->created = new DateTimeImmutable($this->created);
-        $this->updated = $this->updated !== null? new DateTimeImmutable($this->updated) : null;
+        $this->updated = $this->updated !== null ? new DateTimeImmutable($this->updated) : null;
         if (empty($this->hits)) {
             $this->hits = 0;
         }

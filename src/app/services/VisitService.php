@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Redir\app\services;
 
@@ -15,6 +17,7 @@ class VisitService
 
     /**
      * VisitService constructor.
+     *
      * @param BrowserCapabilityProvider $browserCapabilityProvider
      * @param GeolocationProvider       $geoLocationProvider
      * @param IpAddressProvider         $ipAddressProvider

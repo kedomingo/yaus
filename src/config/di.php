@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use DI\Container;
 use Doctrine\Common\Cache\FilesystemCache;
@@ -7,7 +9,6 @@ use Monolog\Logger;
 use Psr\Http\Message\ServerRequestInterface;
 use Redir\app\services\BrowserCapabilityProvider;
 use Roave\DoctrineSimpleCache\SimpleCacheAdapter;
-
 
 return [
     PDO::class => getDbConnection(),

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Redir\app\repository;
 
@@ -12,6 +14,7 @@ class VisitRepository
 
     /**
      * RedirectRepository constructor.
+     *
      * @param VisitDao $dao
      */
     public function __construct(VisitDao $dao)
