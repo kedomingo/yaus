@@ -10,3 +10,9 @@ services:
       MYSQL_ROOT_PASSWORD: 'test_pass'
       MYSQL_USER: 'test'
       MYSQL_PASS: 'pass'
+
+  phpcs:
+    image: cytopia/phpcs
+    volumes:
+      - ./src:/data
+      - ./etc/CodeSniffer.conf:/usr/bin/CodeSniffer.conf
