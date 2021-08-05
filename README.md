@@ -1,6 +1,8 @@
-# Short URL Redirector and Tracker
+# Yet Another URL Shortener 
 
 ## Description
+
+Y.A.U.S. is a Short URL Redirector and Tracker.
 
 This project is meant to be used as a free marketing tool to implement short urls and to track users using them. Currently,
 there is only raw tracking data. This can be fed into an analytics tool for further analysis of link performance.
