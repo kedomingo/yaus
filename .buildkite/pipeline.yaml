@@ -1,6 +1,0 @@
-steps:
-  - command: .
-    plugins:
-      - docker-compose#v3.8.0:
-          run: phpcs
-          config: docker-compose.yaml
