@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Redir\app\repository;
 
@@ -12,6 +14,7 @@ class RedirectRepository
 
     /**
      * RedirectRepository constructor.
+     *
      * @param RedirectDao $dao
      */
     public function __construct(RedirectDao $dao)
@@ -20,7 +23,7 @@ class RedirectRepository
     }
 
     /**
-     * @param string $uri
+     * @param  string $uri
      * @return Redirect|null
      */
     public function findRedirectByUri(string $uri): ?Redirect

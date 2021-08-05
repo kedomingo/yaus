@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Redir\app\persistence;
 
@@ -11,6 +13,7 @@ class RedirectDao
 
     /**
      * RedirectDao constructor.
+     *
      * @param PDO $pdo
      */
     public function __construct(PDO $pdo)

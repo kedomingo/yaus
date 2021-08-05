@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Redir\app\services;
 
@@ -11,6 +13,7 @@ class RedirectProvider
 
     /**
      * RedirectProvider constructor.
+     *
      * @param RedirectRepository $repository
      */
     public function __construct(RedirectRepository $repository)
@@ -19,7 +22,7 @@ class RedirectProvider
     }
 
     /**
-     * @param string $uri
+     * @param  string $uri
      * @return Redirect|null
      */
     public function findRedirectByUri(string $uri): ?Redirect

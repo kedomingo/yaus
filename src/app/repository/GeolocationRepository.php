@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Redir\app\repository;
 
@@ -11,6 +13,7 @@ class GeolocationRepository
 
     /**
      * GeolocationRepository constructor.
+     *
      * @param GeolocationDao $dao
      */
     public function __construct(GeolocationDao $dao)
@@ -19,7 +22,7 @@ class GeolocationRepository
     }
 
     /**
-     * @param string $ipAddress
+     * @param  string $ipAddress
      * @return Geolocation|null\
      */
     public function getGeolocation(string $ipAddress): ?Geolocation

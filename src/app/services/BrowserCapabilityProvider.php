@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Redir\app\services;
 
@@ -13,6 +15,7 @@ class BrowserCapabilityProvider
 
     /**
      * BrowserCapabilityProvider constructor.
+     *
      * @param SimpleCacheAdapter $cache
      * @param Logger             $logger
      */

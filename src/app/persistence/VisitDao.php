@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Redir\app\persistence;
 
@@ -10,6 +12,7 @@ class VisitDao
 
     /**
      * RedirectDao constructor.
+     *
      * @param PDO $pdo
      */
     public function __construct(PDO $pdo)
@@ -126,7 +129,8 @@ class VisitDao
 
     private function writeParams(int $visitId, array $params): void
     {
-        $sql = 'INSERT INTO visit_params(visit_id, param_key, param_value) values (:visit_id, :param_key, :param_value)';
+        $sql = 'INSERT INTO visit_params(visit_id, param_key, param_value) 
+                VALUES (:visit_id, :param_key, :param_value)';
 
         $statement = $this->pdo->prepare($sql);
         foreach ($params as $k => $v) {
