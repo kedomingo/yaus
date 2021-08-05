@@ -39,8 +39,7 @@ There are a few things you need to make sure before running this update script:
      You may need to run this as root/sudo. You only need to do this once. 
   2. Make sure your database user has a `File` privilege granted
 
-Run `sh updategeoip.sh` to update the GeoLite2/GepIP2 ip and location database. 
-
+Run `sh updategeoip.sh` to update the GeoLite2/GepIP2 ip and location database.
 You may schedule a cronjob to schedule this, say, every 2 weeks.
 
 
@@ -74,10 +73,10 @@ This code is written to be ran on *nix environments (Linux, Mac).
 Maxmind's [CSV converter](https://github.com/maxmind/geoip2-csv-converter) is only available in binary unless you want to compile the source code written in Golang.
 A mac version will be installed by composer if you set `--dev` flag of composer.
 
-If you have Docker and `docker-compose` installed, a `docker-compose.yaml` file is included so you can spin up a disposable db in your local.
+If you have Docker and `docker-compose` installed, a `docker-compose.yaml` file is included so you can spin up a disposable db in your local. 
+The default username and password is: user:root password:test_pass. The server will be available at localhost:4306.
 
 ```
 docker-compose up -d db
 ```
 
-The default username and password is: user:root password:test_pass. The server will be available at localhost:4306
