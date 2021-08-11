@@ -1,9 +1,6 @@
 <?php
 
-
-
 namespace App\Http\Controllers\Api;
-
 
 use App\Exceptions\ApiRuntimeException;
 use App\Http\Controllers\Controller;

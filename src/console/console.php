@@ -1,4 +1,5 @@
 <?php
+// phpcs:ignoreFile -- this is not a core file
 
 declare(strict_types=1);
 

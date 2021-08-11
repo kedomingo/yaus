@@ -238,15 +238,3 @@ class AnalyticData
         return $this->device_brand_name;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

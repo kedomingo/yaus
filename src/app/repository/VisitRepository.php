@@ -50,7 +50,7 @@ class VisitRepository
             ($geolocation !== null) ? $geolocation->getCityName() : null,
             ($geolocation !== null) ? $geolocation->getSubdivision1Name() : null,
             ($geolocation !== null) ? $geolocation->getCountryIsoCode() : null,
-            );
+        );
     }
 
     /**

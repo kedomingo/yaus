@@ -1,4 +1,6 @@
-<?php $canvasId = uniqid(); ?>
+<?php
+
+$canvasId = uniqid(); ?>
 <!-- DONUT CHART -->
 <div class="card card-danger">
     <div class="card-header">

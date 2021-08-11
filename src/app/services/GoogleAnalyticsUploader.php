@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Redir\app\services;
 
@@ -62,7 +64,6 @@ class GoogleAnalyticsUploader
                 return 'ga:dimension' . $_ENV[$envVar];
             },
             $envVars
-
         );
 
         $filepath = tempnam(sys_get_temp_dir(), 'goog_csv_');

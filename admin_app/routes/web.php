@@ -22,4 +22,4 @@ Route::get('/', function () {
 Route::get('/dashboard', [AdminController::class, 'getDashboard'])->middleware(['auth'])->name('dashboard');
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
