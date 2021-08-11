@@ -5,10 +5,61 @@ declare(strict_types=1);
 namespace Redir\app\persistence;
 
 use PDO;
+use Redir\app\dto\Visit;
 
 class VisitDao
 {
     private PDO $pdo;
+
+    private const BROWSER_FIELDS = [
+        'browser',
+        'browser_type',
+        'browser_bits',
+        'browser_maker',
+        'browser_modus',
+        'version',
+        'majorver',
+        'minorver',
+        'platform',
+        'platform_version',
+        'platform_description',
+        'platform_bits',
+        'platform_maker',
+        'alpha',
+        'beta',
+        'win16',
+        'win32',
+        'win64',
+        'frames',
+        'iframes',
+        'tables',
+        'cookies',
+        'backgroundsounds',
+        'javascript',
+        'vbscript',
+        'javaapplets',
+        'activexcontrols',
+        'ismobiledevice',
+        'istablet',
+        'issyndicationreader',
+        'crawler',
+        'isfake',
+        'isanonymized',
+        'ismodified',
+        'cssversion',
+        'aolversion',
+        'device_name',
+        'device_maker',
+        'device_type',
+        'device_pointing_method',
+        'device_code_name',
+        'device_brand_name',
+        'renderingengine_name',
+        'renderingengine_version',
+        'renderingengine_description',
+        'renderingengine_maker'
+    ];
+
 
     /**
      * RedirectDao constructor.
@@ -44,55 +95,6 @@ class VisitDao
         ?string $region,
         ?string $country
     ): void {
-        $browserFields = [
-            'browser',
-            'browser_type',
-            'browser_bits',
-            'browser_maker',
-            'browser_modus',
-            'version',
-            'majorver',
-            'minorver',
-            'platform',
-            'platform_version',
-            'platform_description',
-            'platform_bits',
-            'platform_maker',
-            'alpha',
-            'beta',
-            'win16',
-            'win32',
-            'win64',
-            'frames',
-            'iframes',
-            'tables',
-            'cookies',
-            'backgroundsounds',
-            'javascript',
-            'vbscript',
-            'javaapplets',
-            'activexcontrols',
-            'ismobiledevice',
-            'istablet',
-            'issyndicationreader',
-            'crawler',
-            'isfake',
-            'isanonymized',
-            'ismodified',
-            'cssversion',
-            'aolversion',
-            'device_name',
-            'device_maker',
-            'device_type',
-            'device_pointing_method',
-            'device_code_name',
-            'device_brand_name',
-            'renderingengine_name',
-            'renderingengine_version',
-            'renderingengine_description',
-            'renderingengine_maker'
-        ];
-
         $binds = [
             'redirect_id' => $redirectId,
             'uri' => $uri,
@@ -105,7 +107,7 @@ class VisitDao
         ];
 
         $inserts = array_keys($binds);
-        foreach ($browserFields as $browserField) {
+        foreach (self::BROWSER_FIELDS as $browserField) {
             if (isset($browserCapabilities[$browserField]) && trim('' . $browserCapabilities[$browserField]) !== '') {
                 $inserts[] = $browserField;
                 $binds[$browserField] = $browserCapabilities[$browserField];
@@ -139,5 +141,31 @@ class VisitDao
             $statement->bindValue('param_value', $v);
             $statement->execute();
         }
+    }
+
+    /**
+     * @return Visit[]
+     */
+    public function getForAnalytics(): array
+    {
+        $fields = [
+            'id',
+            'created',
+            'redirect_id',
+            'uri',
+            'ip',
+            'lat',
+            'lng',
+            'city',
+            'region',
+            'country',
+        ];
+        $fields = array_merge($fields, self::BROWSER_FIELDS);
+        $sql = sprintf('SELECT %s FROM visits', implode(',', $fields));
+
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_CLASS, Visit::class);
     }
 }
