@@ -15,11 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get(
+    '/',
+    function () {
+        return view('welcome');
+    }
+);
 
 Route::get('/dashboard', [AdminController::class, 'getDashboard'])->middleware(['auth'])->name('dashboard');
+
+Route::get('/change-password', [AdminController::class, 'getChangePassword'])->middleware(['auth'])->name(
+    'changePassword'
+);
 
 
 require __DIR__ . '/auth.php';

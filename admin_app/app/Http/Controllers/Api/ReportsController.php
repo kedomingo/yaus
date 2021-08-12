@@ -34,7 +34,6 @@ class ReportsController extends Controller
             ? new DateTimeImmutable($request->get('to'))
             : null;
 
-
         $group = $request->get('group') ?? VisitsRepository::GROUP_DAY;
 
         if (!in_array($group, VisitsRepository::VALID_GROUPS)) {

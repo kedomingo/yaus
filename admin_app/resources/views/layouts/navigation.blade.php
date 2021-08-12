@@ -150,7 +150,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('password.update')}}" class="nav-link">
+                    <a href="{{route('changePassword')}}" class="nav-link">
                         <i class="nav-icon fas fa-lock"></i>
                         <p>
                             Change Password
