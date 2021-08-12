@@ -87,7 +87,7 @@ A simple collection of metrics will be displayed in the dashboard
 
 The list of short URLs will be displayed in the Redirects page.
 
-<p align="center"><img src="https://raw.githubusercontent.com/kedomingo/yaus/main/etc/images/dashboard.png" width="640"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/kedomingo/yaus/main/etc/images/redirects.png" width="640"></p>
 
 To create a new short URL, hit the `New` button, fill up the details and save
 
