@@ -52,7 +52,7 @@ class CreateUser extends Command
             }
 
             event(new Registered($user));
-            $user->sendEmailVerificationNotification();
+            //$user->sendEmailVerificationNotification();
 
             return 0;
         } catch (\Exception $e) {
