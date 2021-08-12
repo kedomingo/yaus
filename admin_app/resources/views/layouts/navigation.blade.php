@@ -133,8 +133,10 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
+
+                <?php $route = \Illuminate\Support\Facades\Route::currentRouteName(); ?>
                 <li class="nav-item">
-                    <a href="{{route('dashboard')}}" class="nav-link active">
+                    <a href="{{route('dashboard')}}" class="nav-link {{$route === 'dashboard' ? 'active' : ''}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -142,7 +144,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('dashboard')}}" class="nav-link">
+                    <a href="{{route('redirects.index')}}"
+                       class="nav-link {{strpos($route, 'redirects') === 0 ? 'active' : ''}}">
                         <i class="nav-icon fas fa-table"></i>
                         <p>
                             Redirects
