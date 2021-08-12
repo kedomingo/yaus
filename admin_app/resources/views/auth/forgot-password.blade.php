@@ -42,7 +42,7 @@
 @section('content')
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html">IPS Cambodia</a>
+            <a href="/admin">IPS Cambodia</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">

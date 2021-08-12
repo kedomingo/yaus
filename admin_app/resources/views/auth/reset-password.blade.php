@@ -55,7 +55,7 @@
     <div class="login-box">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+                <a href="/admin" class="h1">IPS Cambodia</a>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Reset your password.</p>
