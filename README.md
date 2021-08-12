@@ -27,6 +27,18 @@ based on the user agent.
 6. Supply the default domain name where users will be redirected to in case no redirection is setup for the visited route. This is the `APP_URL` in `.env` 
 7. Run `composer install`
 
+## Setup Admin UI
+1. Copy the whole `admin/` folder into your server's document root. Modify `admin/index.php` to point to the correct location of 
+    `maintenance.php`, `autoload.php`, and `app.php`
+2. From the terminal, go inside the `admin_app` directory
+2. Within `admin_app` copy `.env.sample` into `.env`
+3. Within `admin_app`, supply your database connection details in `.env`
+4. Within `admin_app`, run `composer install`
+5. Within `admin_app`, run `php artisan migrate`
+6. Within `admin_app`, run `php artisan make:user <email> [--name="Your Name"] [--password="initial password"]` to create your first user.
+   if the password is not provided, the initial password will be displayed. Take note of it.
+7. [Optional] setup the email settings in `.env` so that the forgot password function will work. 
+
 ### Updating the Browsercap database
 
 Run `sh updatebrowsercap.sh` to update the browsercap file database and cache. You may schedule a cronjob to schedule this, say, every 2 weeks.
@@ -44,21 +56,6 @@ There are a few things you need to make sure before running this update script:
 Run `sh updategeoip.sh` to update the GeoLite2/GepIP2 ip and location database.
 You may schedule a cronjob to schedule this, say, every 2 weeks.
 
-
-## Adding Redirects
-
-In the `redirects` table, add the following data
-
-    uri: your short url
-    destination: your long url
-    
-Example:
-
-    INSERT INTO redirects (uri, destination) 
-    VALUES ('/test', 'https://google.com')
-
-A user interface is still in the works.
-
 ## Redirection and Tracking
 
 If a redirection is setup for the visited path (e.g., `/test`), the visitor will be redirected to the destination URL.
@@ -67,6 +64,37 @@ Otherwise, the user will be redirected to the `APP_URL` setup in `.env`.
 Any visit to your domain where this is hosted will trigger a page view. An entry to the `visits` table will be added
 for each visit. The `$_GET` parameters will be added to the `visit_params` table if there are any. Available geolocation and browser information
 will be available in the `visits` table. 
+
+
+## Admin
+
+An admin interface is included to manage the short URLs. If you followed the setup instructions, it can be accessed
+from `http://<yoursite>/admin`. 
+
+### Login
+
+Login using the user that was added using `php artisan make:user`
+
+<p align="center"><img src="https://raw.githubusercontent.com/kedomingo/yaus/main/etc/images/login.png" width="640"></p>
+
+### The Dashboard
+
+A simple collection of metrics will be displayed in the dashboard
+
+<p align="center"><img src="https://raw.githubusercontent.com/kedomingo/yaus/main/etc/images/dashboard.png" width="640"></p>
+
+### Managing Short URLs
+
+The list of short URLs will be displayed in the Redirects page.
+
+<p align="center"><img src="https://raw.githubusercontent.com/kedomingo/yaus/main/etc/images/dashboard.png" width="640"></p>
+
+To create a new short URL, hit the `New` button, fill up the details and save
+
+<p align="center"><img src="https://raw.githubusercontent.com/kedomingo/yaus/main/etc/images/create.png" width="640"></p>
+
+To deactivate a short URL, edit the short URL and uncheck 'Active' and save.
+
 
 ## Development
 

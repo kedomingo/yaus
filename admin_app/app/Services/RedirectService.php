@@ -68,7 +68,7 @@ class RedirectService
     public function updateRedirect(int $id, string $uri, string $destination, bool $isActive): ?Redirect
     {
         $uri = '/' . ltrim($uri, '/');
-        
+
         return $this->repository->updateRedirect($id, $uri, $destination, $isActive);
     }
 }
