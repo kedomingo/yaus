@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Redir\app\repository;
 
+use Redir\app\dto\AnalyticData;
 use Redir\app\dto\Geolocation;
+use Redir\app\dto\Visit;
 use Redir\app\persistence\VisitDao;
 
 class VisitRepository
 {
-
     private VisitDao $dao;
 
     /**
@@ -49,6 +50,39 @@ class VisitRepository
             ($geolocation !== null) ? $geolocation->getCityName() : null,
             ($geolocation !== null) ? $geolocation->getSubdivision1Name() : null,
             ($geolocation !== null) ? $geolocation->getCountryIsoCode() : null,
+        );
+    }
+
+    /**
+     * @return AnalyticData[]
+     */
+    public function getAnalyticsData(): array
+    {
+        $visits = $this->dao->getForAnalytics();
+        return array_map(
+            static function (Visit $visit): AnalyticData {
+                return new AnalyticData(
+                    $visit->getId(),
+                    $visit->getCreated(),
+                    $visit->getRedirectId(),
+                    $visit->getUri(),
+                    $visit->getIp(),
+                    $visit->getLat(),
+                    $visit->getLng(),
+                    $visit->getCity(),
+                    $visit->getRegion(),
+                    $visit->getCountry(),
+                    $visit->getPlatform(),
+                    $visit->getBrowser(),
+                    $visit->getBrowserType(),
+                    $visit->getDeviceName(),
+                    $visit->getDeviceMaker(),
+                    $visit->getDeviceType(),
+                    $visit->getDevicePointingMethod(),
+                    $visit->getDeviceBrandName()
+                );
+            },
+            $visits
         );
     }
 }

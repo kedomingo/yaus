@@ -1,6 +1,8 @@
-<?php declare(strict_types=1);
+<?php
 
-require "vendor/autoload.php";
+declare(strict_types=1);
+
+require_once "vendor/autoload.php";
 
 use Redir\app\App;
 use Symfony\Component\Dotenv\Dotenv;
@@ -27,5 +29,8 @@ function getDbConnection(): PDO
         !empty($_ENV['DB_PORT']) ? 'port=' . $_ENV['DB_PORT'] : '',
     );
 
-    return new PDO($dsn, $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD']);
+    $pdo = new PDO($dsn, $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD']);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    return $pdo;
 }

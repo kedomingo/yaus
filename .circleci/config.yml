@@ -55,3 +55,4 @@ jobs:
       # run tests with phpunit or codecept
       #- run: ./vendor/bin/phpunit
       - run: ./vendor/bin/phpcs src
+      - run: ./vendor/bin/phpcs admin_app/app

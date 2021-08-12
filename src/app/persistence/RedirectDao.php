@@ -21,9 +21,12 @@ class RedirectDao
         $this->pdo = $pdo;
     }
 
-    public function findRedirectByUri(string $uri): ?Redirect
+    public function findRedirectByUri(string $uri, $activeOnly = true): ?Redirect
     {
         $sql = 'SELECT id, uri, destination, hits, created, updated FROM redirects WHERE uri=:uri';
+        if ($activeOnly) {
+            $sql .= ' AND is_active=1';
+        }
         $statement = $this->pdo->prepare($sql);
         $statement->bindValue('uri', $uri);
 

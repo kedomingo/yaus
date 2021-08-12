@@ -2,3 +2,4 @@
 .idea
 browsercap-cache
 vendor
+.phpcs-cache

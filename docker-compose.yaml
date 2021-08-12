@@ -1,5 +1,27 @@
 version: '3.4'
 services:
+
+  apache:
+    build:
+      context: .
+      dockerfile: ./docker/web/Dockerfile
+    volumes:
+      # Make this entire directory available inside the /app directory of the container
+      - ./:/app
+      # Create the vhost entry for apache
+      - ./docker/web/httpd-vhosts.conf:/etc/apache2/sites-enabled/000-default.conf
+    ports:
+      - '8080:80'
+    depends_on:
+      - db
+      - mailcatcher
+
+  # Your smtp server. Point to SMTP to mailcatcher:1025. Webmail is at localhost:1080
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+      - '1080:1080'
+
   db:
     image: mariadb/server:10.4
     ports:
