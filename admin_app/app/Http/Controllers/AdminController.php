@@ -54,9 +54,9 @@ class AdminController extends Controller
         return view('admin.redirects', ['redirects' => $redirects]);
     }
 
-    public function getNewRedirect()
+    public function getNewRedirect(Request $request)
     {
-        return view('admin.editredirect');
+        return view('admin.editredirect', ['request' => $request]);
     }
 
     public function getEditRedirect(int $id, Request $request)
